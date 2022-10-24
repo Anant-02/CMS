@@ -8,7 +8,7 @@ app.use(express.urlencoded());
 app.use(cors());
 
 mongoose.connect(
-  "mongodb://localhost:27017/testdb",
+  "mongodb+srv://Anant:tsp123@cluster0.f3qc2tt.mongodb.net/test",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
 const User = new mongoose.model("User", userSchema);
 
 //Routes
+app.get('/', (req, res) => {
+  res.send('Working!');
+});
+
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
   //check email
