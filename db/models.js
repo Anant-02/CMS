@@ -7,11 +7,12 @@ const tiffinService = {
 };
 
 const tsCustomer = {
-    fname: String,
-    lname: String,
+    name: String,
+    rfid: String,
+    email: String,
     contact: String,
-    subscription: String,
+    subscription: Number,
     tsname: String,
 };
 
-module.exports = tiffinService, tsCustomer;
+module.exports = { tiffinService, tsCustomer };

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const tiffinService = require("./models");
-const tsCustomer = require("./models");
+const model = require("./models");
 
 mongoose.connect(
   "mongodb+srv://Anant:tsp123@cluster0.f3qc2tt.mongodb.net/test",
@@ -13,10 +12,10 @@ mongoose.connect(
   }
 );
   
-const tsSchema = new mongoose.Schema(tiffinService);
-const cxSchema = new mongoose.Schema(tsCustomer);
+const tsSchema = new mongoose.Schema(model.tiffinService);
+const cxSchema = new mongoose.Schema(model.tsCustomer);
 
 const TiffinService = mongoose.model("tiffinservices", tsSchema);
 const Customer = mongoose.model("customers", cxSchema);
 
-module.exports = TiffinService, Customer;
+module.exports = { TiffinService, Customer };

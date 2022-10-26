@@ -10,8 +10,9 @@ const Register = () => {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [user, setUserDetails] = useState({
-    fname: "",
-    lname: "",
+    tsname: "",
+    address: "",
+    contact: "",
     email: "",
     password: "",
     cpassword: "",
@@ -28,11 +29,14 @@ const Register = () => {
   const validateForm = (values) => {
     const error = {};
     const regex = /^[^\s+@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!values.fname) {
-      error.fname = "First Name is required";
+    if (!values.tsname) {
+      error.tsname = "Tiffin Service Name is required";
     }
-    if (!values.lname) {
-      error.lname = "Last Name is required";
+    if (!values.address) {
+      error.address = "Address is required";
+    }
+    if (!values.contact) {
+      error.contact = "Contact is required"
     }
     if (!values.email) {
       error.email = "Email is required";
@@ -78,22 +82,31 @@ const Register = () => {
           <h1>Create your account</h1>
           <input
             type="text"
-            name="fname"
-            id="fname"
-            placeholder="First Name"
+            name="tsname"
+            id="tsname"
+            placeholder="Tiffin Service Name"
             onChange={changeHandler}
-            value={user.fname}
+            value={user.tsname}
           />
-          <p className={basestyle.error}>{formErrors.fname}</p>
+          <p className={basestyle.error}>{formErrors.tsname}</p>
           <input
             type="text"
-            name="lname"
-            id="lname"
-            placeholder="Last Name"
+            name="address"
+            id="address"
+            placeholder="Address"
             onChange={changeHandler}
-            value={user.lname}
+            value={user.address}
           />
-          <p className={basestyle.error}>{formErrors.lname}</p>
+          <p className={basestyle.error}>{formErrors.address}</p>
+          <input
+            type="text"
+            name="contact"
+            id="contact"
+            placeholder="Contact"
+            onChange={changeHandler}
+            value={user.contact}
+          />
+          <p className={basestyle.error}>{formErrors.contact}</p>
           <input
             type="email"
             name="email"

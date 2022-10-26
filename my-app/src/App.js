@@ -1,7 +1,7 @@
 import "./App.css";
-import Profile from "./Components/Profile/Profile";
-import Login from "./Components/Login/Login";
-import Register from "./Components/Register/Register";
+import Profile from "./Components/Profile";
+import Login from "./Components/Login";
+import Register from "./Components/Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
@@ -17,7 +17,7 @@ function App() {
               userstate && userstate._id ? (
                 <Profile
                   setUserState={setUserState}
-                  username={userstate.fname}
+                  username={userstate.tsname}
                 />
               ) : (
                 <Login setUserState={setUserState} />

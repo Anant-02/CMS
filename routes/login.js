@@ -1,11 +1,11 @@
-const TiffinService = require("../db/conn");
+const Model = require("../db/conn");
 const express = require("express");
 const router = express.Router();
 
 router.post("/login", (req, res) => {
     const { email, password } = req.body;
     //check email
-    TiffinService.findOne({ email }, (err, user) => {
+    Model.TiffinService.findOne({ email }, (err, user) => {
       if (user) {
         //check password
         if (password === user.password) {
@@ -22,11 +22,11 @@ router.post("/login", (req, res) => {
 router.post("/signup", (req, res) => {
   const { tsname, address, contact, email, password } = req.body;
   //check email
-  TiffinService.findOne({ email }, (err, user) => {
+  Model.TiffinService.findOne({ email }, (err, user) => {
     if (user) {
       res.send({ message: "Tiffin Service already registered!" });
     } else {
-      const user = new TiffinService({ tsname, address, contact, email, password });
+      const user = new Model.TiffinService({ tsname, address, contact, email, password });
       user.save((err) => {
         if (err) {
           res.send(err);
