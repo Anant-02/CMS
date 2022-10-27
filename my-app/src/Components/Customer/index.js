@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
+import {Row, Col} from 'react-bootstrap'
 import axios from "axios";
+import CustomerUi from './CustomerUi';
 
 const Customer = (props) => {
     const [customer, setCustomer] = useState([]);
@@ -11,13 +13,13 @@ const Customer = (props) => {
     }, []);
     return (
         <div>
-            <ul>
+            <Row>
             {
                 customer.map((c) => 
-                    <li key = {c.name}>{c.name}</li>
+                    <Col key = {c.name}><CustomerUi customer = {c}/></Col>
                 )
             }
-            </ul>        
+            </Row>        
         </div>
     )
 }
