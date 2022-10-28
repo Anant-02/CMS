@@ -1,9 +1,10 @@
-import "./App.css";
-import Profile from "./Components/Profile";
-import Login from "./Components/Login";
-import Register from "./Components/Register";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import './App.css';
+import Profile from './Components/Profile';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import Edit from './Components/Edit/Form';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 
 function App() {
   const [userstate, setUserState] = useState({});
@@ -29,6 +30,7 @@ function App() {
             element={<Login setUserState={setUserState} />}
           ></Route>
           <Route path="/signup" element={<Register />}></Route>
+          <Route path="/edit" element={<Edit />}></Route>
         </Routes>
       </Router>
     </div>
