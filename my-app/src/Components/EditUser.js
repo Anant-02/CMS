@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Dialog } from 'primereact/dialog';
 import { InputNumber } from 'primereact/inputnumber';
 import { Button } from 'primereact/button';
+import { Toast } from 'primereact/toast';
 
-const EditUser = ({ customer, getCustomers }) => {
+const EditUser = ({ customer, getCustomers, subDialog, setSubDialog }) => {
   const [subs, setSubs] = useState(customer.subscription);
-  const [subDialog, setSubDialog] = useState(false);
+  const toast = useRef(null);
 
   const onInputSubs = (e) => {
     e.preventDefault();
@@ -22,6 +23,12 @@ const EditUser = ({ customer, getCustomers }) => {
       .then(() => {
         getCustomers();
         hideDialog();
+        toast.current.show({
+          severity: 'success',
+          summary: 'Alert',
+          detail: 'User Updated Successfully!',
+          life: 3000,
+        });
       })
       .catch((err) => console.error(err));
   };
@@ -30,13 +37,23 @@ const EditUser = ({ customer, getCustomers }) => {
     setSubDialog(false);
   };
 
+  const handleCancel = () => {
+    hideDialog();
+    toast.current.show({
+      severity: 'info',
+      summary: 'Alert',
+      detail: 'User Not Updated!',
+      life: 3000,
+    });
+  };
+
   const subDialogFooter = (
     <React.Fragment>
       <Button
         label="Cancel"
         icon="pi pi-times"
         className="p-button-text"
-        onClick={hideDialog}
+        onClick={handleCancel}
       />
       <Button
         label="Save"
@@ -49,9 +66,7 @@ const EditUser = ({ customer, getCustomers }) => {
 
   return (
     <React.Fragment>
-      <button onClick={() => setSubDialog(true)}>
-        <i className="pi pi-user-edit"></i>
-      </button>
+      <Toast ref={toast} />
 
       <Dialog
         visible={subDialog}

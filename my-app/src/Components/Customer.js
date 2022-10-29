@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-import UserTable from './Table';
+import UserCard from './UserCard';
 import AddUser from './AddUser';
 
 const Customer = (props) => {
@@ -22,7 +22,7 @@ const Customer = (props) => {
       <Row>
         {customer.map((c) => (
           <Col key={c.email}>
-            <UserTable customer={c} getCustomers={getCustomers} />
+            <UserCard customer={c} getCustomers={getCustomers} />
           </Col>
         ))}
       </Row>

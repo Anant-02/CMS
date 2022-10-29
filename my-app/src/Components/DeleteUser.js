@@ -1,10 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import axios from 'axios';
 import { ConfirmDialog } from 'primereact/confirmdialog';
 import { Toast } from 'primereact/toast';
 
-const DeleteUser = ({ customer, getCustomers }) => {
-  const [deleteDialog, setDeleteDialog] = useState(false);
+const DeleteUser = ({
+  customer,
+  getCustomers,
+  deleteDialog,
+  setDeleteDialog,
+}) => {
   const toast = useRef(null);
 
   async function deleteCustomer(rfid) {
@@ -37,10 +41,6 @@ const DeleteUser = ({ customer, getCustomers }) => {
   return (
     <React.Fragment>
       <Toast ref={toast} />
-
-      <button onClick={() => setDeleteDialog(true)}>
-        <i className="pi pi-delete-left"></i>
-      </button>
 
       <ConfirmDialog
         visible={deleteDialog}
