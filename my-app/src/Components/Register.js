@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
-import basestyle from "../Base.module.css";
-import registerstyle from "./Register.module.css";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import basestyle from './css/Base.module.css';
+import registerstyle from './css/Register.module.css';
+import axios from 'axios';
 
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from 'react-router-dom';
 const Register = () => {
   const navigate = useNavigate();
 
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [user, setUserDetails] = useState({
-    tsname: "",
-    address: "",
-    contact: "",
-    email: "",
-    password: "",
-    cpassword: "",
+    tsname: '',
+    address: '',
+    contact: '',
+    email: '',
+    password: '',
+    cpassword: '',
   });
 
   const changeHandler = (e) => {
@@ -30,30 +30,30 @@ const Register = () => {
     const error = {};
     const regex = /^[^\s+@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.tsname) {
-      error.tsname = "Tiffin Service Name is required";
+      error.tsname = 'Tiffin Service Name is required';
     }
     if (!values.address) {
-      error.address = "Address is required";
+      error.address = 'Address is required';
     }
     if (!values.contact) {
-      error.contact = "Contact is required"
+      error.contact = 'Contact is required';
     }
     if (!values.email) {
-      error.email = "Email is required";
+      error.email = 'Email is required';
     } else if (!regex.test(values.email)) {
-      error.email = "This is not a valid email format!";
+      error.email = 'This is not a valid email format!';
     }
     if (!values.password) {
-      error.password = "Password is required";
+      error.password = 'Password is required';
     } else if (values.password.length < 4) {
-      error.password = "Password must be more than 4 characters";
+      error.password = 'Password must be more than 4 characters';
     } else if (values.password.length > 10) {
-      error.password = "Password cannot exceed more than 10 characters";
+      error.password = 'Password cannot exceed more than 10 characters';
     }
     if (!values.cpassword) {
-      error.cpassword = "Confirm Password is required";
+      error.cpassword = 'Confirm Password is required';
     } else if (values.cpassword !== values.password) {
-      error.cpassword = "Confirm password and password should be same";
+      error.cpassword = 'Confirm password and password should be same';
     }
     return error;
   };
@@ -69,9 +69,9 @@ const Register = () => {
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(user);
-      axios.post("http://localhost:8000/signup/", user).then((res) => {
+      axios.post('http://localhost:8000/signup', user).then((res) => {
         alert(res.data.message);
-        navigate("/login", { replace: true });
+        navigate('/login', { replace: true });
       });
     }
   }, [formErrors]);

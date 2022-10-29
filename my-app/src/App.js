@@ -1,8 +1,8 @@
 import './App.css';
-import Profile from './Components/Profile';
+import Dashboard from './Components/Dashboard';
 import Login from './Components/Login';
 import Register from './Components/Register';
-import Form from './Components/Edit/Form.js';
+import AddUserForm from './Components/AddUserForm.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -16,7 +16,7 @@ function App() {
             path="/"
             element={
               userstate && userstate._id ? (
-                <Profile
+                <Dashboard
                   setUserState={setUserState}
                   username={userstate.tsname}
                 />
@@ -30,7 +30,7 @@ function App() {
             element={<Login setUserState={setUserState} />}
           ></Route>
           <Route path="/signup" element={<Register />}></Route>
-          <Route path="/form" element={<Form />}></Route>
+          <Route path="/add-user-form" element={<AddUserForm />}></Route>
         </Routes>
       </Router>
     </div>

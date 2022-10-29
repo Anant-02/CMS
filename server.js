@@ -10,7 +10,7 @@ app.use(express.urlencoded());
 app.use(cors());
 
 app.use('/', router);
-app.use('/profile', customer);
+app.use('/customer', customer);
 
 app.listen(8000, () => {
   console.log('Server starting at 8000');

@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useFormik } from 'formik';
 import { InputText } from 'primereact/inputtext';
-import { InputNumber } from 'primereact/inputnumber';
 import { Button } from 'primereact/button';
 import { Checkbox } from 'primereact/checkbox';
-// import { Dialog } from 'primereact/dialog';
 import { classNames } from 'primereact/utils';
-import './FormDemo.css';
+import './css/AddUserForm.css';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 export const FormikFormDemo = () => {
-  // const [showMessage, setShowMessage] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const formik = useFormik({
@@ -24,6 +21,7 @@ export const FormikFormDemo = () => {
       tsname: location.state.tsname,
       accept: false,
     },
+
     validate: (data) => {
       let errors = {};
 
@@ -45,9 +43,9 @@ export const FormikFormDemo = () => {
 
       return errors;
     },
+
     onSubmit: (data) => {
-      // setShowMessage(false);
-      axios.post('http://localhost:8000/profile', data).then(() => {
+      axios.post('http://localhost:8000/customer', data).then(() => {
         navigate('/');
       });
       formik.resetForm();
@@ -64,41 +62,8 @@ export const FormikFormDemo = () => {
     );
   };
 
-  // const dialogFooter = (
-  //   <div className="flex justify-content-center">
-  //     <Button
-  //       label="OK"
-  //       className="p-button-text"
-  //       autoFocus
-  //       onClick={() => setShowMessage(false)}
-  //     />
-  //   </div>
-  // );
   return (
     <div className="form-demo">
-      {/* <Dialog
-        visible={showMessage}
-        onHide={() => setShowMessage(false)}
-        position="top"
-        footer={dialogFooter}
-        showHeader={false}
-        breakpoints={{ '960px': '80vw' }}
-        style={{ width: '30vw' }}
-      >
-        <div className="flex align-items-center flex-column pt-6 px-3">
-          <i
-            className="pi pi-check-circle"
-            style={{ fontSize: '5rem', color: 'var(--green-500)' }}
-          ></i>
-          <h5>Registration Successful!</h5>
-          <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-            Your account is registered under name <b>{formData.name}</b> ; it'll
-            be valid next 30 days without activation. Please check{' '}
-            <b>{formData.email}</b> for activation instructions.
-          </p>
-        </div>
-      </Dialog> */}
-
       <div className="flex justify-content-center">
         <div className="card">
           <h5 className="text-center">Register</h5>
