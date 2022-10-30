@@ -1,0 +1,19 @@
+.center-div{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.main {
+    display:grid;
+    grid-template-columns: auto auto auto;
+    margin-bottom: 20px;
+}
+
+.col-3 {
+  width: 100%;
+}
+
+.p-button {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

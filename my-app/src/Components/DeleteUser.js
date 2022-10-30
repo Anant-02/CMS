@@ -22,7 +22,7 @@ const DeleteUser = ({
 
   const accept = () => {
     toast.current.show({
-      severity: 'info',
+      severity: 'success',
       summary: 'Alert',
       detail: 'User Deleted Successfully!',
       life: 3000,
@@ -31,7 +31,7 @@ const DeleteUser = ({
 
   const reject = () => {
     toast.current.show({
-      severity: 'info',
+      severity: 'warn',
       summary: 'Alert',
       detail: 'User Not Deleted!',
       life: 3000,

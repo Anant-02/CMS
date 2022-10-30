@@ -1,20 +1,20 @@
 import React from 'react';
+import { Button } from 'primereact/button';
 import Customer from './Customer';
-import baseStyle from './css/Base.module.css';
+import './css/Dashboard.css';
 
 const Dashboard = ({ setUserState, username }) => {
   return (
-    <div>
-      <h1>{username} Customers</h1>
+    <div className="center-div">
+      <h1 style={{ marginTop: '35vh' }}>{username} Customers</h1>
       <Customer tsname={username} />
-      <button
-        className={baseStyle.button_common}
+      <Button
+        label="Logout"
+        className="p-button-raised"
         onClick={() => {
           setUserState({});
         }}
-      >
-        Logout
-      </button>
+      ></Button>
     </div>
   );
 };

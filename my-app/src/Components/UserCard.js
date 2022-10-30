@@ -15,7 +15,11 @@ const UserCard = ({ customer, getCustomers }) => {
 
   const footer = (
     <span>
-      <Button label="Edit" icon="pi pi-pencil" onClick={handleEdit} />
+      <Button
+        label="Edit Subscription"
+        icon="pi pi-pencil"
+        onClick={handleEdit}
+      />
       {
         <EditUser
           customer={customer}

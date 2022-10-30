@@ -15,7 +15,7 @@ const AddUser = (props) => {
       <Button
         label="Add Customer"
         icon="pi pi-user-plus"
-        className="p-button-text"
+        className="p-button-raised"
         onClick={addUser}
       />
     </div>
