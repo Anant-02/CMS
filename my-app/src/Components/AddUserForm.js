@@ -18,8 +18,7 @@ export const FormikFormDemo = () => {
       rfid: '',
       contact: '',
       subscription: '',
-      tsname: location.state.tsname,
-      accept: false,
+      tsname: location.state.tsname
     },
 
     validate: (data) => {
@@ -36,11 +35,6 @@ export const FormikFormDemo = () => {
       ) {
         errors.email = 'Invalid email address. E.g. example@email.com';
       }
-
-      if (!data.accept) {
-        errors.accept = 'You need to agree to the terms and conditions.';
-      }
-
       return errors;
     },
 
@@ -149,25 +143,6 @@ export const FormikFormDemo = () => {
                 />
                 <label htmlFor="subscription">Subscription</label>
               </span>
-            </div>
-            <div className="field-checkbox">
-              <Checkbox
-                inputId="accept"
-                name="accept"
-                checked={formik.values.accept}
-                onChange={formik.handleChange}
-                className={classNames({
-                  'p-invalid': isFormFieldValid('accept'),
-                })}
-              />
-              <label
-                htmlFor="accept"
-                className={classNames({
-                  'p-error': isFormFieldValid('accept'),
-                })}
-              >
-                I agree to the terms and conditions*
-              </label>
             </div>
             <Button type="submit" label="Submit" className="mt-2" />
           </form>
